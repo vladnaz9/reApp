@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello WorkersController!{% endblock %}
+
+{% block body %}
+    {% block header %} {{ parent() }} {% endblock %}
+    <div class="container">
+
+    {{ form(form) }}
+    {{ employeeName }}
+        <a class="page-link" href="{{ path('app_workers')}}"> Вернуться к просмотру всех </a>
+    <table class="table">
+        <thead>
+        <tr>
+        </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td class="col-3">
+                    <a href="{{ path('employee_show', {'id': employee.id}) }}">{{ employee.id }}</a>
+                </td>
+                <td class="col-9">
+                    <a>{{ employee.name }}</a><br>
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="{{ path('employee_show', {'page': page - 1, 'id': employeeId}) }}"> Previous</a></li>
+            <li class="page-item"><a class="page-link" href="{{ path('employee_show', {'page': page + 1, 'id': employeeId}) }}">Next</a></li>
+        </ul>
+    </nav>
+</div>
+{% endblock %}
+

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FileController!{% endblock %}
+
+{% block body %}
+    {% block header %} {{ parent() }} {% endblock %}
+<div class="container">
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.document) }}
+        {{ form_row(form.submit) }}
+
+    {{ form_end(form) }}
+
+</div>
+{% endblock %}
